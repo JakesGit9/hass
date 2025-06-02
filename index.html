@@ -15,22 +15,59 @@
       color: #333;
     }
 
+    /* image */
     header {
-      background: linear-gradient(to right, #6c63ff, #5a55e3);
+      position: relative;
+      height: 450px;
+      background-image: url('https://cdn-res.keymedia.com/cms/images/ca/126/0395_637713903988333939.jpg');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
       color: white;
-      padding: 60px 20px;
       text-align: center;
+      padding: 160px 20px 0;
+      overflow: hidden;
+    }
+
+    /* Overlay */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 0;
+    }
+
+    header h1, header p {
+      position: relative;
+      margin: 0;
+      z-index: 1;
+      opacity: 0;
+      animation: slideUpFade 1s ease-out forwards;
     }
 
     header h1 {
-      font-size: 2.8em;
+      font-size: 3.2em;
       margin-bottom: 10px;
+      animation-delay: 0.2s;
     }
 
     header p {
-      font-size: 1.2em;
+      font-size: 1.3em;
       opacity: 0.9;
-      margin: 0;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes slideUpFade {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .section {
