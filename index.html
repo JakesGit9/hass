@@ -15,7 +15,6 @@
       color: #333;
     }
 
-    /* image */
     header {
       position: relative;
       height: 450px;
@@ -30,7 +29,6 @@
       overflow: hidden;
     }
 
-    /* Overlay */
     header::before {
       content: "";
       position: absolute;
@@ -91,6 +89,14 @@
 
     .text-block {
       max-width: 500px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .text-block.float-in {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .text-block h2 {
@@ -194,7 +200,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section petition-section">
     <a href="https://chng.it/MHyfcW7NKd" target="_blank">
       <img src="assets/Petition.jpg" alt="Sign the petition">
     </a>
@@ -207,6 +213,22 @@
   <footer>
     <p>© 2025 Jake Eyles. No rights reserved.</p>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('float-in');
+        } else {
+          entry.target.classList.remove('float-in');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.text-block').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
